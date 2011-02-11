@@ -19,3 +19,9 @@ git push origin master # push your changes to the remote repo
 * To pull (get the changes) just:
 
 git pull
+
+* If you generate files that are not related to the repository (for example
+  output of tests) you could do:
+
+git clean -n # just to see what files are going to be removed
+git clean -f # to *really* remove the files
