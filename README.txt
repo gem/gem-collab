@@ -25,3 +25,22 @@ git pull
 
 git clean -n # just to see what files are going to be removed
 git clean -f # to *really* remove the files
+
+How to start
+------------
+
+git clone git@github.com:gem/gem-collab.git
+cd GEM/buildout
+virtualenv --python=/usr/lib/python2.6 --no-site-packages .
+./bin/python2.6 bootstrap.py
+./bin/buildout -c start.cfg
+
+./bin/instance fg     # or ./bin/instance start
+
+
+How to test
+-----------
+
+./bin/test -m gem.PACKAGENAME
+
+./bin/testall
