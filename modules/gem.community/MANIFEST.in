@@ -1,0 +1,2 @@
+recursive-include gem *
+global-exclude *pyc
