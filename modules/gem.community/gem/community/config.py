@@ -4,6 +4,8 @@
 PROJECTNAME = 'gem.community'
 
 GROUP_ADMINISTRATOR_ROLE = 'GroupAdministrator'
+WIKI_AREA_ID = 'wiki-area'
+FILE_AREA_ID = 'file-area'
 
 ADD_PERMISSIONS = {
     # -*- extra stuff goes here -*-
