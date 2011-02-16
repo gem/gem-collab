@@ -37,6 +37,10 @@ Because add-on themes or products may remove or hide the login portlet, this tes
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
 
+We are not logged in as portal owner. Do it manually
+
+    >>> self.loginAsPortalOwner()
+
 Here, we set the value of the fields on the login form and then simulate a
 submit click.  We then ensure that we get the friendly logged-in message:
 
@@ -124,51 +128,4 @@ Sample' tab.
     >>> browser.open(portal_url)
     >>> 'New Community Sample' in browser.contents
     False
-
-Adding a new Community content item as contributor
-------------------------------------------------
-
-Not only site managers are allowed to add Community content items, but
-also site contributors.
-
-Let's logout and then login as 'contributor', a portal member that has the
-contributor role assigned.
-
-    >>> browser.getLink('Log out').click()
-    >>> browser.open(portal_url + '/login_form')
-    >>> browser.getControl(name='__ac_name').value = 'contributor'
-    >>> browser.getControl(name='__ac_password').value = default_password
-    >>> browser.getControl(name='submit').click()
-    >>> browser.open(portal_url)
-
-We use the 'Add new' menu to add a new content item.
-
-    >>> browser.getLink('Add new').click()
-
-We select 'Community' and click the 'Add' button to get to the add form.
-
-    >>> browser.getControl('Community').click()
-    >>> browser.getControl(name='form.button.Add').click()
-    >>> 'Community' in browser.contents
-    True
-
-Now we fill the form and submit it.
-
-    >>> browser.getControl(name='title').value = 'Community Sample'
-    >>> browser.getControl('Save').click()
-    >>> 'Changes saved' in browser.contents
-    True
-
-Done! We added a new Community content item logged in as contributor.
-
-Finally, let's login back as manager.
-
-    >>> browser.getLink('Log out').click()
-    >>> browser.open(portal_url + '/login_form')
-    >>> browser.getControl(name='__ac_name').value = portal_owner
-    >>> browser.getControl(name='__ac_password').value = default_password
-    >>> browser.getControl(name='submit').click()
-    >>> browser.open(portal_url)
-
-
 
