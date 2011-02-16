@@ -58,7 +58,7 @@ def setup_product():
 # PloneTestCase set up this product on installation.
 
 setup_product()
-ptc.setupPloneSite(products=['gem.community'])
+ptc.setupPloneSite(products=['gem.community'], extension_profiles=['gem.community:default'])
 
 
 class TestCase(ptc.PloneTestCase):
