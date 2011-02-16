@@ -52,6 +52,8 @@ Finally, let's return to the front page of our site before continuing
     >>> browser.open(portal_url)
 
 -*- extra stuff goes here -*-
+
+
 The Community content type
 ===============================
 
