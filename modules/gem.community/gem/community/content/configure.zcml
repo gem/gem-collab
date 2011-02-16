@@ -6,6 +6,18 @@
   <!-- configure your content components here -->
   
   <!-- -*- extra stuff goes here -*- -->
+  <class class=".filearea.FileArea">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.IFileArea"
+        />
+  </class>
+  <class class=".wikiarea.WikiArea">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.IWikiArea"
+        />
+  </class>
   <class class=".community.Community">
     <require
         permission="zope2.View"
