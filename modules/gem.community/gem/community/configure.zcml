@@ -22,5 +22,8 @@
       />
   
   <!-- -*- extra stuff goes here -*- -->
+  <subscriber for=".interfaces.ICommunity
+                   Products.Archetypes.interfaces.IObjectInitializedEvent"
+              handler=".subscribers.initialize_community" />
 
 </configure>
