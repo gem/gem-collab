@@ -85,6 +85,15 @@ Now we fill the form and submit it.
 
 And we are done! We added a new 'Community' content item to the portal.
 
+Check if the wiki and file area are correctly installed
+
+    >>> from gem.community.config import WIKI_AREA_ID, FILE_AREA_ID
+    >>> community_contents = self.portal['community-sample'].objectIds()
+    >>> WIKI_AREA_ID in community_contents
+    True
+    >>> FILE_AREA_ID in community_contents
+    True
+
 Updating an existing Community content item
 ---------------------------------------
 
