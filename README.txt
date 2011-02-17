@@ -35,7 +35,6 @@ virtualenv --python=/usr/bin/python2.6 --no-site-packages .
 ./bin/python2.6 bootstrap.py
 ./bin/buildout -c start.cfg
 
-./bin/instance fg     # or ./bin/instance start
 
 
 How to start (with the Unified Installer)
@@ -46,6 +45,29 @@ wget http://launchpad.net/plone/4.0/4.0.3/+download/Plone-4.0.3-20110720-Unified
 tar xfz Plone-4.0.3-20110720-UnifiedInstaller.tgz 
 cd Plone-4.0.3-UnifiedInstaller/
 ./install.sh standalone # This takes a while
+
+After plone is installed under your $HOME/Plone
+cd $HOME/Plone/zinstance/
+ln -s /your/git/repo/location/buildout/config.d .
+cd src
+ln -s /your/git/repo/location/modules .
+cd ..
+
+create a start.cfg file inside the $HOME/Plone/zinstance dir containing:
+
+[buildout]
+extends = config.d/devel.cfg
+
+then execute:
+
+export C_INCLUDE_PATH=/usr/include/tcl8.5 # or your tcl location
+./bin/buildout -c start.cfg # this takes a while too :)
+
+
+How to run
+----------
+
+./bin/instance fg     # or ./bin/instance start
 
 How to test
 -----------
