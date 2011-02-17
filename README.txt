@@ -26,8 +26,8 @@ git pull
 git clean -n # just to see what files are going to be removed
 git clean -f # to *really* remove the files
 
-How to start
-------------
+How to start (with virtualenv -- not really tested)
+---------------------------------------------------
 
 git clone git@github.com:gem/gem-collab.git
 cd GEM/buildout
@@ -37,6 +37,15 @@ virtualenv --python=/usr/bin/python2.6 --no-site-packages .
 
 ./bin/instance fg     # or ./bin/instance start
 
+
+How to start (with the Unified Installer)
+---------------------------------------------------
+
+
+wget http://launchpad.net/plone/4.0/4.0.3/+download/Plone-4.0.3-20110720-UnifiedInstaller.tgz
+tar xfz Plone-4.0.3-20110720-UnifiedInstaller.tgz 
+cd Plone-4.0.3-UnifiedInstaller/
+./install.sh standalone # This takes a while
 
 How to test
 -----------
