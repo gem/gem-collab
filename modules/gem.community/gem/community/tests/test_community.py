@@ -22,11 +22,29 @@ class TestCommunity(FunctionalTestCase):
         self.assertTrue(WIKI_AREA_ID in self.community1.objectIds())
         self.assertTrue(FILE_AREA_ID in self.community1.objectIds())
 
+class TestCommunityGroupAdmin(FunctionalTestCase):
+    """ A GroupAdministrator should create a Community and related contents
+        without errors
+    """
+
+    def afterSetUp(self):
+        self.setRoles(['Member','Contributor','GroupAdministrator'])
+
+        self.portal.invokeFactory('Community', 'com1')
+        self.community1 = self.portal.com1
+        notify(ObjectInitializedEvent(self.community1))
+        
+    def test_areas(self):
+        """ Test area creations """
+        self.assertTrue(WIKI_AREA_ID in self.community1.objectIds())
+        self.assertTrue(FILE_AREA_ID in self.community1.objectIds())
+
 
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
     suite.addTest(makeSuite(TestCommunity))
+    suite.addTest(makeSuite(TestCommunityGroupAdmin))
     return suite
 
 

@@ -12,5 +12,15 @@
     <permission name="Manage users" acquire="True">
       <role name="GroupAdministrator"/>
     </permission>
+    <permission name="gem.community: Add Community" acquire="True">
+      <role name="GroupAdministrator"/>
+    </permission>
+    <permission name="gem.community: Add FileArea" acquire="True">
+      <role name="GroupAdministrator"/>
+    </permission>
+    <permission name="gem.community: Add WikiArea" acquire="True">
+      <role name="GroupAdministrator"/>
+    </permission>
+
   </permissions>
 </rolemap>
