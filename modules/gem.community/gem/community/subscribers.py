@@ -10,6 +10,10 @@ def initialize_community(obj, event):
         obj_ids = obj.objectIds()
         if WIKI_AREA_ID not in obj_ids:
             obj.invokeFactory(type_name='WikiArea', id=WIKI_AREA_ID)
+            wiki = getattr(obj, WIKI_AREA_ID)
+            wiki.setTitle('Wiki')
         if FILE_AREA_ID not in obj_ids:
             obj.invokeFactory(type_name='FileArea', id=FILE_AREA_ID)
-    
+            files = getattr(obj, WIKI_AREA_ID)
+            files.setTitle('Files')
+ 
