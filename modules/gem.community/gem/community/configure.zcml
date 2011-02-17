@@ -22,8 +22,13 @@
       />
   
   <!-- -*- extra stuff goes here -*- -->
+  <!-- This event handler creates by default the community, wiki areas into che community -->
   <subscriber for=".interfaces.ICommunity
                    Products.Archetypes.interfaces.IObjectInitializedEvent"
               handler=".subscribers.initialize_community" />
+
+  <!-- This adapter registers a new field for files (old_version reference field) -->
+  <adapter factory=".extender.FileExtender" />
+
 
 </configure>
