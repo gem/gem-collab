@@ -31,7 +31,7 @@ How to start
 
 git clone git@github.com:gem/gem-collab.git
 cd GEM/buildout
-virtualenv --python=/usr/lib/python2.6 --no-site-packages .
+virtualenv --python=/usr/bin/python2.6 --no-site-packages .
 ./bin/python2.6 bootstrap.py
 ./bin/buildout -c start.cfg
 
