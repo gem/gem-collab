@@ -50,7 +50,7 @@ After plone is installed under your $HOME/Plone
 cd $HOME/Plone/zinstance/
 ln -s /your/git/repo/location/buildout/config.d .
 cd src
-ln -s /your/git/repo/location/modules .
+ln -s /your/git/repo/location/modules/yourmodule . # for example gem.community
 cd ..
 
 create a start.cfg file inside the $HOME/Plone/zinstance dir containing:
