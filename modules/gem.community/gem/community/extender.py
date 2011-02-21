@@ -3,9 +3,9 @@ from zope.interface import implements
 
 from archetypes.schemaextender.interfaces import ISchemaExtender
 from archetypes.schemaextender.field import ExtensionField
+from archetypes.referencebrowserwidget import ReferenceBrowserWidget
 
 from Products.Archetypes.public import ReferenceField
-from Products.Archetypes.public import ReferenceWidget
 from Products.ATContentTypes.interface import IATFile
 
 from gem.community import communityMessageFactory as _
@@ -24,7 +24,7 @@ class FileExtender(object):
               relationship='oldVersion',
               allowed_types=['File',],
               multiValued=False,
-              widget = ReferenceWidget(
+              widget = ReferenceBrowserWidget(
                   label=_(u'old_version_label', default=u'Old version'),
                   description=_(u'old_version_label', default=u'This file is the archived version'),
                   ),
