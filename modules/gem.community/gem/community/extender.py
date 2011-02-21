@@ -7,8 +7,10 @@ from archetypes.referencebrowserwidget import ReferenceBrowserWidget
 
 from Products.Archetypes.public import ReferenceField
 from Products.ATContentTypes.interface import IATFile
+from Products.CMFCore.utils import getToolByName
 
 from gem.community import communityMessageFactory as _
+from gem.community.config import PROJECTNAME
 
 class MyReferenceField(ExtensionField, ReferenceField):
      """ Another reference field """
@@ -35,6 +37,10 @@ class FileExtender(object):
         self.context = context
 
     def getFields(self):
-        return self.fields
+        # TODO: use archetypes schema tuning
+        portal_quickinstaller = getToolByName(self.context, 'portal_quickinstaller')
+        if portal_quickinstaller.isProductInstalled(PROJECTNAME):
+            return self.fields
+        return []
 
 
