@@ -4,16 +4,28 @@
     name="title">Contains workflow definitions for your portal</property>
  <object name="file_workflow" meta_type="Workflow"/>
  <object name="wiki_workflow" meta_type="Workflow"/>
+ <object name="community_workflow" meta_type="Workflow"/>
+
  <bindings>
   <default>
    <bound-workflow workflow_id="simple_publication_workflow"/>
   </default>
 
-  <type type_id="Document">
+<!-- TODO: maybe it is better applying by default a workflow policy configuration to all community objects with the file and wiki workflow -->
+  <type type_id="Document"> 
    <bound-workflow workflow_id="wiki_workflow"/>
   </type>
   <type type_id="File">
    <bound-workflow workflow_id="file_workflow"/>
+  </type>
+
+  <type type_id="FileArea">
+  </type>
+  <type type_id="WikiArea">
+  </type>
+
+  <type type_id="Community">
+   <bound-workflow workflow_id="community_workflow"/>
   </type>
 
  </bindings>

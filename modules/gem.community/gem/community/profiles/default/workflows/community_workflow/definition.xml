@@ -1,49 +1,13 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="file_workflow" title="File Workflow" description=" - File workflow - Things start out as private, and can be submitted for review. Files can be archived" state_variable="review_state" initial_state="private" manager_bypass="False">
+<dc-workflow workflow_id="community_workflow" title="Community Workflow" description=" - Community workflow is a two state workflow. The owner of community acquire the review portal content permission." state_variable="review_state" initial_state="private" manager_bypass="False">
  <permission>Access contents information</permission>
  <permission>Change portal events</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
  <permission>Review portal content</permission>
- <state state_id="pending" title="Pending review">
-  <description>Waiting to be reviewed, not editable by the owner.</description>
-  <exit-transition transition_id="make_private"/>
-  <exit-transition transition_id="publish"/>
-  <exit-transition transition_id="reject"/>
-  <exit-transition transition_id="retract"/>
-  <permission-map name="Access contents information" acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-  </permission-map>
-  <permission-map name="Change portal events" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Reviewer</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content" acquired="False">
-   <permission-role>Manager</permission-role>
-   <permission-role>Reviewer</permission-role>
-  </permission-map>
-  <permission-map name="Review portal content" acquired="False">
-   <permission-role>GroupAdministrator</permission-role>
-   <permission-role>Manager</permission-role>
-  </permission-map>
-  <permission-map name="View" acquired="False">
-   <permission-role>Contributor</permission-role>
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-   <permission-role>Reader</permission-role>
-   <permission-role>Reviewer</permission-role>
-  </permission-map>
- </state>
  <state state_id="private" title="Private">
   <description>Can only be seen and edited by the owner.</description>
   <exit-transition transition_id="publish"/>
-  <exit-transition transition_id="submit"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Contributor</permission-role>
    <permission-role>Editor</permission-role>
@@ -62,8 +26,7 @@
    <permission-role>Owner</permission-role>
   </permission-map>
   <permission-map name="Review portal content" acquired="False">
-   <permission-role>GroupAdministrator</permission-role>
-   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Contributor</permission-role>
@@ -75,8 +38,6 @@
  </state>
  <state state_id="published" title="Published">
   <description>Visible to everyone, not editable by the owner.</description>
-  <exit-transition transition_id="archive"/>
-  <exit-transition transition_id="reject"/>
   <exit-transition transition_id="retract"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Anonymous</permission-role>
@@ -92,8 +53,7 @@
    <permission-role>Owner</permission-role>
   </permission-map>
   <permission-map name="Review portal content" acquired="False">
-   <permission-role>GroupAdministrator</permission-role>
-   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Anonymous</permission-role>
@@ -106,23 +66,9 @@
    <guard-permission>Review portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="reject" title="Reviewer send content back for re-drafting" new_state="private" trigger="USER" before_script="" after_script="">
-  <description>Sending the item back will return the item to the original author instead of publishing it. You should preferably include a reason for why it was not published.</description>
-  <action url="%(content_url)s/content_status_modify?workflow_action=reject" category="workflow" icon="">Send back</action>
-  <guard>
-   <guard-permission>Review portal content</guard-permission>
-  </guard>
- </transition>
  <transition transition_id="retract" title="Member retracts submission" new_state="private" trigger="USER" before_script="" after_script="">
   <description>If you submitted the item by mistake or want to perform additional edits, this will take it back.</description>
   <action url="%(content_url)s/content_status_modify?workflow_action=retract" category="workflow" icon="">Retract</action>
-  <guard>
-   <guard-permission>Request review</guard-permission>
-  </guard>
- </transition>
- <transition transition_id="submit" title="Member submits content for publication" new_state="pending" trigger="USER" before_script="" after_script="">
-  <description>Puts your item in a review queue, so it can be published on the site.</description>
-  <action url="%(content_url)s/content_status_modify?workflow_action=submit" category="workflow" icon="">Submit for publication</action>
   <guard>
    <guard-permission>Request review</guard-permission>
   </guard>
