@@ -31,10 +31,12 @@
   <adapter factory=".extender.FileExtender" />
 
   <!-- Post validation for files -->
+<!--
   <subscriber
       provides="Products.Archetypes.interfaces.IObjectPostValidation"
       factory=".validators.FilePostValidation"
       />
+-->
 
 
 

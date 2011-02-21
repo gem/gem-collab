@@ -10,6 +10,7 @@ from gem.community.config import PROJECTNAME
 
 
 class FilePostValidation(object):
+    """ """
     implements(IObjectPostValidation)
     adapts(IATFile)
 
