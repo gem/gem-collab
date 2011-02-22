@@ -3,8 +3,8 @@
  <permission>Access contents information</permission>
  <permission>Change portal events</permission>
  <permission>Modify portal content</permission>
- <permission>View</permission>
  <permission>Review portal content</permission>
+ <permission>View</permission>
  <state state_id="pending" title="Pending review">
   <description>Waiting to be reviewed, not editable by the owner.</description>
   <exit-transition transition_id="make_private"/>
@@ -28,8 +28,8 @@
    <permission-role>Reviewer</permission-role>
   </permission-map>
   <permission-map name="Review portal content" acquired="False">
-   <permission-role>GroupAdministrator</permission-role>
    <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Contributor</permission-role>
@@ -62,8 +62,8 @@
    <permission-role>Owner</permission-role>
   </permission-map>
   <permission-map name="Review portal content" acquired="False">
-   <permission-role>GroupAdministrator</permission-role>
    <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Contributor</permission-role>
@@ -84,16 +84,14 @@
   <permission-map name="Change portal events" acquired="False">
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Editor</permission-role>
    <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
   </permission-map>
   <permission-map name="Review portal content" acquired="False">
-   <permission-role>GroupAdministrator</permission-role>
    <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
   </permission-map>
   <permission-map name="View" acquired="False">
    <permission-role>Anonymous</permission-role>

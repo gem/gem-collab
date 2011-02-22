@@ -151,8 +151,9 @@ class TestWorkflowPermissions(FunctionalTestCase):
         self.filearea.invokeFactory('File', "gadminfilepublished")
 
         # add local roles to groupmember
-        self.portal.community.manage_addLocalRoles('groupmember', ['Reader', 'Contributor'])
-        self.portal.community.manage_addLocalRoles('othergroupmember', ['Reader', 'Contributor'])
+        self.portal.community.manage_addLocalRoles('groupadministrator', [ 'Contributor', 'Editor', 'Reviewer']) 
+        self.portal.community.manage_addLocalRoles('groupmember', [ 'Contributor']) 
+        self.portal.community.manage_addLocalRoles('othergroupmember', [ 'Contributor']) 
         self.portal.community.reindexObjectSecurity()
 
         self.login('groupmember')
@@ -265,8 +266,8 @@ class TestWorkflowPermissions(FunctionalTestCase):
         sm = getSecurityManager()
 
         self.assertTrue(sm.checkPermission(View, self.wikiarea.gadminwikiprivate))
-#        self.assertTrue(sm.checkPermission(ModifyPortalContent, self.wikiarea.gadminwikiprivate))
-#        self.assertTrue(sm.checkPermission(ReviewPortalContent, self.wikiarea.gadminwikiprivate))
+        self.assertTrue(sm.checkPermission(ModifyPortalContent, self.wikiarea.gadminwikiprivate))
+        self.assertTrue(sm.checkPermission(ReviewPortalContent, self.wikiarea.gadminwikiprivate))
 
         self.assertTrue(sm.checkPermission(View, self.wikiarea.gmemberwikiprivate))
         self.assertTrue(sm.checkPermission(ModifyPortalContent, self.wikiarea.gmemberwikiprivate))
@@ -329,8 +330,8 @@ class TestWorkflowPermissions(FunctionalTestCase):
         sm = getSecurityManager()
 
         self.assertTrue(sm.checkPermission(View, self.wikiarea.gadminwikipublished))
-#        self.assertTrue(sm.checkPermission(ModifyPortalContent, self.wikiarea.gadminwikipublished))
-#        self.assertTrue(sm.checkPermission(ReviewPortalContent, self.wikiarea.gadminwikipublished))
+        self.assertTrue(sm.checkPermission(ModifyPortalContent, self.wikiarea.gadminwikipublished))
+        self.assertTrue(sm.checkPermission(ReviewPortalContent, self.wikiarea.gadminwikipublished))
 
         self.assertTrue(sm.checkPermission(View, self.wikiarea.gmemberwikipublished))
         self.assertTrue(sm.checkPermission(ModifyPortalContent, self.wikiarea.gmemberwikipublished))
@@ -380,14 +381,14 @@ class TestWorkflowPermissions(FunctionalTestCase):
 
         self.assertFalse(sm.checkPermission(View, self.filearea.gadminfileprivate))
         self.assertFalse(sm.checkPermission(ModifyPortalContent, self.filearea.gadminfileprivate))
-#        self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gadminfileprivate))
+        self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gadminfileprivate))
 
 #        community workflow : owner add review portal content
 #        file workflow, wiki workflow: acquire review portal content permission
 
         self.assertFalse(sm.checkPermission(View, self.filearea.gmemberfileprivate))
         self.assertFalse(sm.checkPermission(ModifyPortalContent, self.filearea.gmemberfileprivate))
-#        self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gmemberfileprivate))
+        self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gmemberfileprivate))
 
     def test_gmember_file_private(self):
         """group member / private file permissions"""
@@ -432,11 +433,11 @@ class TestWorkflowPermissions(FunctionalTestCase):
         sm = getSecurityManager()
 
         self.assertTrue(sm.checkPermission(View, self.filearea.gadminfilesubmitted))
-#        self.assertTrue(sm.checkPermission(ModifyPortalContent, self.filearea.gadminfilesubmitted))
+        self.assertTrue(sm.checkPermission(ModifyPortalContent, self.filearea.gadminfilesubmitted))
         self.assertTrue(sm.checkPermission(ReviewPortalContent, self.filearea.gadminfilesubmitted))
 
         self.assertTrue(sm.checkPermission(View, self.filearea.gmemberfilesubmitted))
-#        self.assertTrue(sm.checkPermission(ModifyPortalContent, self.filearea.gmemberfilesubmitted))
+        self.assertTrue(sm.checkPermission(ModifyPortalContent, self.filearea.gmemberfilesubmitted))
         self.assertTrue(sm.checkPermission(ReviewPortalContent, self.filearea.gmemberfilesubmitted))
 
 
@@ -449,11 +450,11 @@ class TestWorkflowPermissions(FunctionalTestCase):
 
         self.assertFalse(sm.checkPermission(View, self.filearea.gadminfilesubmitted))
         self.assertFalse(sm.checkPermission(ModifyPortalContent, self.filearea.gadminfilesubmitted))
-#        self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gadminfilesubmitted))
+        self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gadminfilesubmitted))
 
         self.assertFalse(sm.checkPermission(View, self.filearea.gmemberfilesubmitted))
         self.assertFalse(sm.checkPermission(ModifyPortalContent, self.filearea.gmemberfilesubmitted))
-#        self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gmemberfilesubmitted))
+        self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gmemberfilesubmitted))
 
     def test_gmember_file_submitted(self):
         """group member / submitted file permissions"""
@@ -514,11 +515,11 @@ class TestWorkflowPermissions(FunctionalTestCase):
 
         self.assertTrue(sm.checkPermission(View, self.filearea.gadminfilepublished))
         self.assertFalse(sm.checkPermission(ModifyPortalContent, self.filearea.gadminfilepublished))
-#        self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gadminfilepublished))
+        self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gadminfilepublished))
 
         self.assertTrue(sm.checkPermission(View, self.filearea.gmemberfilepublished))
         self.assertFalse(sm.checkPermission(ModifyPortalContent, self.filearea.gmemberfilepublished))
-#        self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gmemberfilepublished))
+        self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gmemberfilepublished))
 
     def test_gmember_file_published(self):
         """group member / published file permissions"""
@@ -532,7 +533,7 @@ class TestWorkflowPermissions(FunctionalTestCase):
         self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gadminfilepublished))
 
         self.assertTrue(sm.checkPermission(View, self.filearea.gmemberfilepublished))
-#        self.assertFalse(sm.checkPermission(ModifyPortalContent, self.filearea.gmemberfilepublished))
+        self.assertFalse(sm.checkPermission(ModifyPortalContent, self.filearea.gmemberfilepublished))
         self.assertFalse(sm.checkPermission(ReviewPortalContent, self.filearea.gmemberfilepublished))
 
     def test_otheruser_file_published(self):
