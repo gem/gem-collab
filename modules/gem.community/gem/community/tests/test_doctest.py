@@ -1,8 +1,8 @@
 import unittest
 import doctest
 
-#from zope.testing import doctestunit
-#from zope.component import testing, eventtesting
+from zope.testing import doctestunit
+from zope.component import testing
 
 from Testing import ZopeTestCase as ztc
 
@@ -18,6 +18,9 @@ def test_suite():
             test_class=base.FunctionalTestCase,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE |
                 doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS),
+#        doctestunit.DocTestSuite(
+#            module='gem.community.validators',
+#            setUp=testing.setUp, tearDown=testing.tearDown),
 
         ])
 

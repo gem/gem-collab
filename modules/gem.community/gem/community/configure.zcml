@@ -30,5 +30,4 @@
   <!-- This adapter registers a new field for files (old_version reference field) -->
   <adapter factory=".extender.FileExtender" />
 
-
 </configure>
