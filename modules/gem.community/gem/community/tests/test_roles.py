@@ -151,7 +151,7 @@ class TestWorkflowPermissions(FunctionalTestCase):
         self.filearea.invokeFactory('File', "gadminfilepublished")
 
         # add local roles to groupmember
-        self.portal.community.manage_addLocalRoles('groupadministrator', [ 'Contributor', 'Editor', 'Reviewer']) 
+        self.portal.community.manage_addLocalRoles('groupadministrator', [ 'Contributor', 'Editor']) 
         self.portal.community.manage_addLocalRoles('groupmember', [ 'Contributor']) 
         self.portal.community.manage_addLocalRoles('othergroupmember', [ 'Contributor']) 
         self.portal.community.reindexObjectSecurity()
