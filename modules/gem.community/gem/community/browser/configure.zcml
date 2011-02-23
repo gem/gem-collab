@@ -6,5 +6,16 @@
   <include package="plone.app.contentmenu" />
 
   <!-- -*- extra stuff goes here -*- -->
+    <!-- versions viewlet -->
+
+    <browser:viewlet
+        for="Products.ATContentTypes.interface.IATFile"
+        view="plone.app.layout.globals.interfaces.IViewView"
+        name="gem.community.fileversions"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+        template="versions.pt"
+        permission="zope2.View"
+        class=".viewlets.FileVersions"
+        />
 
 </configure>

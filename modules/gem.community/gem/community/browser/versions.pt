@@ -1,0 +1,11 @@
+<div id="versions-box" tal:define="newver view/getNewVersion;
+                                   oldver view/getOldVersion">
+    <div id="versions-box-newer" tal:condition="newver">
+        <span i18n:translate="label_newer_version">Newer version:</span>&nbsp;<a tal:attributes="href string:${newver/url}/view" tal:content="newver/title">New version</a>
+    </div>
+    <div id="versions-box-older" tal:condition="oldver">
+        <span i18n:translate="label_older_version">Older version:</span>&nbsp;<a tal:attributes="href string:${oldver/url}/view" tal:content="oldver/title">Old version</a>
+    </div>
+
+</div>
+
