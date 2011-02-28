@@ -5,12 +5,12 @@
   </roles>
   <permissions>
     <permission name="Add portal member" acquire="False">
-      <role name="GroupAdministrator"/>
+<!--      <role name="GroupAdministrator"/>-->
       <role name="Manager"/>
       <role name="Owner"/>
     </permission>
     <permission name="Manage users" acquire="True">
-      <role name="GroupAdministrator"/>
+<!--      <role name="GroupAdministrator"/>-->
     </permission>
     <permission name="gem.community: Add Community" acquire="True">
       <role name="GroupAdministrator"/>

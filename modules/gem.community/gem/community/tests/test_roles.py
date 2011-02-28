@@ -17,13 +17,13 @@ class TestRoles(FunctionalTestCase):
     def test_roles_permissions(self):
         """ Assigned by default the right permissions to the new GroupAdministrator role? """
         # we should grant the add portal member
-        self.assertTrue(GROUP_ADMINISTRATOR_ROLE in [item['name'] for item in self.portal.rolesOfPermission('Add portal member') if item['selected']])
+        self.assertFalse(GROUP_ADMINISTRATOR_ROLE in [item['name'] for item in self.portal.rolesOfPermission('Add portal member') if item['selected']])
         # we don't have to purge other permission settings
         self.assertTrue('Manager' in [item['name'] for item in self.portal.rolesOfPermission('Add portal member') if item['selected']])
         self.assertTrue('Owner' in [item['name'] for item in self.portal.rolesOfPermission('Add portal member') if item['selected']])
 
         # and the manage users permission
-        self.assertTrue(GROUP_ADMINISTRATOR_ROLE in [item['name'] for item in self.portal.rolesOfPermission('Manage users') if item['selected']])
+        self.assertFalse(GROUP_ADMINISTRATOR_ROLE in [item['name'] for item in self.portal.rolesOfPermission('Manage users') if item['selected']])
 
 class TestWorkflows(FunctionalTestCase):
     """ """
